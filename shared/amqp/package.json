@@ -1,0 +1,23 @@
+{
+  "name": "amqp-class",
+  "version": "1.0.0",
+  "description": "amqp access in class",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "amqp-class"
+  },
+  "keywords": [
+    "amqp",
+    "class",
+    "rabbitmq"
+  ],
+  "author": "gzc",
+  "license": "MIT"
+}
