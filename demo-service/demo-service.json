@@ -1,0 +1,13 @@
+{
+  "env": "production",
+  "listen": {
+    "name": "服务监听配置信息",
+    "host": "127.0.0.1",
+    "port": 5101
+  },
+  "configServer": {
+    "name": "配置中心服务信息",
+    "host": "127.0.0.1",
+    "port": 5701
+  }
+}

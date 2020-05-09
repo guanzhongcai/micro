@@ -1,0 +1,15 @@
+{
+  "name": "match-server",
+  "version": "1.0.0",
+  "description": "匹配服",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "keywords": [
+    "match"
+  ],
+  "author": "gzc",
+  "license": "ISC",
+  "dependencies": {}
+}

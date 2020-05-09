@@ -6,7 +6,6 @@
 let express = require('express');
 let configData = require('../data/configData');
 let ServiceAccess = require('../etcd/ServiceAccess');
-let hotDataSystem = require('../hotData/hotDataSystem');
 let compression = require('compression');
 let jwt = require('express-jwt');
 const {JWT_SECRET} = require('../const');
@@ -29,18 +28,14 @@ class ExpressServer {
     /**
      * 构造器
      * @param serverType string 服务类型
-     * @param hotDataPath string 热更数据表目录
-     * @param language string 热更数据表语言类别
      * @param configServer object {host, port} 配置服信息
      * @param listen object {host, port} 本服务对外host和监听端口
      * @param logs object {host, port} 日志模块
      * @param traceEndpoint string 服务链路追踪终点
      */
-    constructor({serverType, hotDataPath, language, configServer, listen, logs, traceEndpoint}) {
+    constructor({serverType, configServer, listen, logs, traceEndpoint}) {
 
         this.serverType = serverType;
-        this.hotDataPath = hotDataPath || "";
-        this.language = language || "";
         this.configServer = {
             host: configServer.host || "0.0.0.0",
             port: configServer.port,
@@ -80,9 +75,7 @@ ExpressServer.prototype.InitServer = async function (dbInitFunc, discoverServers
 
     //初始化service注册etcd中心
     this.serviceAccess = new ServiceAccess(configData.etcd);
-    if (hotDataPath.length > 0) {
-        await this.serviceAccess.discover(SERVER_TYPE.version);
-    }
+    await this.serviceAccess.discover(SERVER_TYPE.version);
 
     await this._initListen();
     await this.serviceAccess.register(serverType, listen);
